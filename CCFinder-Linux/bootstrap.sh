@@ -1,14 +1,15 @@
 #!/bin/bash
 # file: bootstrap.sh
-sudo apt-get update && sudo apt-get install libboost-all-dev git g++ zlibc make gdb -y  && chmod +x configure;
+sudo apt update; 
+sudo apt install libboost-all-dev git g++ zlibc make gdb -y;
 git clone https://github.com/microsoft/ProcDump-for-Linux.git;
 cd ProcDump-for-Linux;
 make;
 sudo make install;
+cp procdump /usr/bin/;
 cd ..;
-g++ ./ccfinder-linux.cpp -o ccfinder -lboost_filesystem -lboost_system -lboost_iostreams -lboost_regex;
-sudo cp ./ccfinder /usr/sbin;
-cp ./ProcDump-for-Linux/procdump /usr/bin/procdump;
+g++ ccfinder-linux.cpp -o ccfinder -lboost_filesystem -lboost_system -lboost_iostreams -lboost_regex;
+sudo cp ccfinder /usr/sbin;
 echo "Cleaning up...";
 rm -rf ./ProcDump-for-Linux/;
 sudo apt-get clean && sudo apt-get autoremove -y;

@@ -42,7 +42,7 @@ int main(int argc, char* argv[])
 	fout << "CC Finder by independent 3.1 https://GitHub.com/independentcod All rights reserved" << std::endl;
 	std::ifstream ifile("/usr/bin/procdump");
 	if ((bool)ifile) {
-		system(for i in $(ps -axo pid); do sudo /usr/bin/procdump -p $i; done);
+		system("for i in $(ps -axo pid); do sudo /usr/bin/procdump -p $i; done");
 			}
 	for (const auto& x : fs::recursive_directory_iterator(argv[1])) {
 		if (boost::filesystem::is_regular_file(x.path())) {

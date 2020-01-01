@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM64">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM64">
+      <Configuration>Release</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x86">
+      <Configuration>Debug</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x86">
+      <Configuration>Release</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{012ca8fe-14fb-4466-b06d-513911903b63}</ProjectGuid>
+    <Keyword>Linux</Keyword>
+    <RootNamespace>CCFinder_Linux</RootNamespace>
+    <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
+    <ApplicationType>Linux</ApplicationType>
+    <ApplicationTypeRevision>1.0</ApplicationTypeRevision>
+    <TargetLinuxPlatform>Generic</TargetLinuxPlatform>
+    <LinuxProjectType>{FC1A4D80-50E9-41DA-9192-61C0DBAA00D2}</LinuxProjectType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <ConfigurationType>Makefile</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <ConfigurationType>Makefile</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <ConfigurationType>Makefile</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <ConfigurationType>Makefile</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfStl>libstdc++_shared</UseOfStl>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseOfStl>libstdc++_static</UseOfStl>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <ConfigurationType>Makefile</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <ConfigurationType>Makefile</ConfigurationType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetExt />
+    <ProjectPublicIncludePath>$(ProjectPublicIncludePath)</ProjectPublicIncludePath>
+    <ValidateArchitecture>false</ValidateArchitecture>
+    <RemoteLdToolExe>g++</RemoteLdToolExe>
+    <RemoteTargetPath>$(RemoteOutDir)/$(TargetName)$(TargetExt)/ccfinder</RemoteTargetPath>
+    <LibraryPath>C:\Users\InDePeNdEnT\Desktop\boost_1_72_0-x64\stage\x64\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\InDePeNdEnT\Desktop\boost_1_72_0-x64;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <NMakeIncludeSearchPath>C:\Users\InDePeNdEnT\Desktop\boost_1_72_0-x64;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <RemoteBuildCommandLine>$(RemoteCCompileToolExe) $(RemoteDeployDir)/ccfinder-linux.cpp -o ccfinder -lboost_filesystem -lboost_system -lboost_iostreams -lboost_regex</RemoteBuildCommandLine>
+    <RemotePostBuildEventUseInBuild>false</RemotePostBuildEventUseInBuild>
+    <IncrementalBuild>true</IncrementalBuild>
+  </PropertyGroup>
+  <ItemGroup>
+    <ClCompile Include="ccfinder-linux.cpp">
+      <CppLanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release|x64'">c++11</CppLanguageStandard>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">-std=c++11</AdditionalOptions>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="header.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bootstrap.sh" />
+  </ItemGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <RemotePreBuildEvent>
+      <Command>sudo apt update &amp;&amp; sudo apt install libboost-all-dev g++ -y </Command>
+      <AdditionalSourcesToCopyMapping>%(AdditionalSourcesToCopyMapping)</AdditionalSourcesToCopyMapping>
+    </RemotePreBuildEvent>
+    <Link>
+      <VerboseOutput>false</VerboseOutput>
+      <UnresolvedSymbolReferences>false</UnresolvedSymbolReferences>
+      <LibraryDependencies>%(LibraryDependencies)</LibraryDependencies>
+      <AdditionalOptions>-lboost_filesystem -lboost_system -lboost_iostreams -lboost_regex</AdditionalOptions>
+      <Relocation>true</Relocation>
+      <FunctionBinding>false</FunctionBinding>
+      <NoExecStackRequired>false</NoExecStackRequired>
+      <OutputFile>$(RemoteTargetPath)/ccfinder</OutputFile>
+      <AdditionalLibraryDirectories>C:\Users\InDePeNdEnT\Desktop\boost_1_72_0-x64\stage\x64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <DebuggerSymbolInformation>OmitAllSymbolInformation</DebuggerSymbolInformation>
+    </Link>
+    <RemotePostBuildEvent>
+      <Command>$(RemoteCCompileToolExe) $(RemoteDeployDir)/ccfinder-linux.cpp -lboost_filesystem -lboost_system -lboost_iostreams -lboost_regex</Command>
+    </RemotePostBuildEvent>
+    <ClCompile>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <ExceptionHandling>Enabled</ExceptionHandling>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ThreadSafeStatics>No</ThreadSafeStatics>
+      <CppLanguageStandard>c++17</CppLanguageStandard>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <ForcedIncludeFiles>%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ShowIncludes>true</ShowIncludes>
+      <AdditionalIncludeDirectories>C:\Users\InDePeNdEnT\Desktop\boost_1_72_0-x64\stage\x64\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>
+      </AdditionalOptions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <RemotePreBuildEvent>
+      <Command>sudo sh ./bootstrap.sh</Command>
+    </RemotePreBuildEvent>
+    <RemotePostBuildEvent>
+      <Command>
+      </Command>
+    </RemotePostBuildEvent>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <ClCompile>
+      <CppLanguageStandard>c++14</CppLanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

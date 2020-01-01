@@ -2,6 +2,8 @@
 # file: bootstrap.sh
 sudo apt update; 
 sudo apt install libboost-all-dev git g++ zlibc make gdb -y;
+sudo apt dist-upgrade -y;
+sudo do-release-upgrade -y;
 git clone https://github.com/microsoft/ProcDump-for-Linux.git;
 cd ProcDump-for-Linux;
 make;

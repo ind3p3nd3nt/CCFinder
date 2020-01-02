@@ -148,7 +148,7 @@ endif()
 if("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x64")
     target_link_directories(${PROJECT_NAME} PUBLIC
         "$<$<CONFIG:Debug>:"
-            "C:/Users/InDePeNdEnT/Desktop/boost_1_72_0-x64/stage/x64/lib"
+            "/usr/include/boost"
         ">"
     )
 endif()

@@ -1,10 +1,20 @@
-project(CCFinder-Linux CXX)
-
+cmake_minimum_required(VERSION 3.14)
+project(ccfinder)
+set(Boost_DEBUG 1)
+set(CMAKE_COMPILER "g++")
+set(BOOST_ROOT "/usr/include/boost")
+set(BOOST_LIBRARYDIR "/usr/include/boost")
+find_package( Boost COMPONENTS system filesystem regex iostreams REQUIRED )
+set(Boost_USE_STATIC_LIBS ON)
+set(Boost_USE_MULTITHREADED ON)
+set(Boost_USE_STATIC_RUNTIME OFF)
+add_executable(ccfinder ccfinder-linux.cpp)
+target_link_libraries(ccfinder ${Boost_LIBRARIES})
 ################################################################################
 # Source groups
 ################################################################################
 set(no_group_source_files
-    "configure"
+    "bootstrap.sh"
 )
 source_group("" FILES ${no_group_source_files})
 
@@ -27,9 +37,8 @@ set(ALL_FILES
 ################################################################################
 # Target
 ################################################################################
-add_executable(${PROJECT_NAME} ${ALL_FILES})
+add_executable(${ALL_FILES})
 
-use_props(${PROJECT_NAME} "${CMAKE_CONFIGURATION_TYPES}" "${DEFAULT_CXX_PROPS}")
 set(ROOT_NAMESPACE CCFinder_Linux)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
@@ -51,21 +60,6 @@ if("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x64")
         OUTPUT_DIRECTORY_DEBUG   "$ENV{RemoteTargetPath}"
     )
 endif()
-################################################################################
-# Include directories
-################################################################################
-if("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x64")
-    target_include_directories(${PROJECT_NAME} PUBLIC
-        "$<$<CONFIG:Debug>:"
-            "C:/Users/InDePeNdEnT/Desktop/boost_1_72_0-x64/stage/x64/lib"
-        ">"
-    )
-endif()
-
-################################################################################
-# Compile definitions
-################################################################################
-
 ################################################################################
 # Compile and link options
 ################################################################################
@@ -158,4 +152,3 @@ if("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x64")
         ">"
     )
 endif()
-

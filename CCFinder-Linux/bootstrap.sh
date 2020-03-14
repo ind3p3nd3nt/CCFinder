@@ -1,5 +1,3 @@
-#!/bin/bash
-# file: bootstrap.sh
 sudo apt update; 
 sudo apt install libboost-all-dev git g++ zlibc make gdb -y;
 sudo apt dist-upgrade -y;
@@ -15,5 +13,5 @@ sudo cp ccfinder /usr/sbin;
 echo "Cleaning up...";
 rm -rf ./ProcDump-for-Linux/;
 sudo apt-get clean && sudo apt-get autoremove -y;
-echo "You're all done! Now call the program like this: sudo ./ccfinder /";
+echo "You're all done! Now call the program like this: sudo ./ccfinder /home";
 echo "REMEMBER I AM NOT RESPONSIBLE FOR THE ACTIONS YOU MAKE WITH THIS PROGRAM!!!";

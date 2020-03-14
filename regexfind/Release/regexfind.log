@@ -1,0 +1,17 @@
+﻿  regexfind.cpp
+C:\Users\indep\OneDrive\Bureau\CCFinder-master\regexfind\regexfind.cpp(89,23): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
+C:\Users\indep\OneDrive\Bureau\CCFinder-master\regexfind\regexfind.cpp(161,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\indep\OneDrive\Bureau\CCFinder-master\regexfind\regexfind.cpp(35,40): warning C4101: 'e': unreferenced local variable
+C:\Users\indep\OneDrive\Bureau\CCFinder-master\regexfind\regexfind.cpp(75): message : see reference to function template instantiation 'std::string ConvertToStringUsingBoost<DWORD>(const ValueType &)' being compiled
+          with
+          [
+              ValueType=DWORD
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(632): message : see reference to class template instantiation 'std::chrono::duration<double,std::ratio<1,1>>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(178): message : see reference to class template instantiation 'std::chrono::duration<__int64,std::nano>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(610): message : see reference to class template instantiation 'std::chrono::time_point<std::chrono::steady_clock,std::chrono::nanoseconds>' being compiled
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 789 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  regexfind.vcxproj -> C:\Users\indep\OneDrive\Bureau\CCFinder-master\Release\CCFinderv3.0.exe

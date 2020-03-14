@@ -1,0 +1,6 @@
+﻿  Validating sources
+  Copying sources remotely to 'irc-4.iownyour.biz'
+  Invoking 'sudo sh ./bootstrap.sh', working directory: '/home/r00t/projects/CCFinder-Linux/'
+  sudo: no tty present and no askpass program specified
+  
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Application Type\Linux\1.0\Linux.Makefile.Targets(400,5): error : sudo sh ./bootstrap.sh exited with code 1, please see the Output Window - Build output for more details (NOTE: the build output verbosity might need to be changed in Tools Options to see more information in the Output Window).

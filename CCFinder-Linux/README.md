@@ -19,8 +19,7 @@ And you are done!
 
 ***COMPILING IN CENTOS (untested)***
 
-sudo yum upgrade -y && sudo yum install boost-devel libboost-devel -y
-g++ ccfinder.cpp -o ccfinder -lboost_filesystem -lboost_system -lboost_iostreams -lboost_regex
+sudo yum upgrade -y && sudo yum install boost-devel libboost-devel -y && g++ ccfinder.cpp -o ccfinder -lboost_filesystem -lboost_system -lboost_iostreams -lboost_regex
 
 ***RUNNING***
 

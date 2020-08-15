@@ -28,7 +28,3 @@ sudo ./ccfinder "directory"
 Example:
 
 sudo ./ccfinder /
-
-***COMPILING WITH VISUAL STUDIO REMOTE SSH***
-
-Simply load the project and build it, all is automatic! :)))

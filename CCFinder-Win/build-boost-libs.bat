@@ -1,6 +1,6 @@
 @echo off
 rem Directory to boost root
-set boost_dir=boost_1_66_0
+set boost_dir=boost_1_74_0
   
 rem Number of cores to use when building boost
 set cores=%NUMBER_OF_PROCESSORS%

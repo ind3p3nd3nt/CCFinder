@@ -1,5 +1,5 @@
 sudo apt update; 
-sudo apt install libboost-all-dev git g++ zlibc make gdb -y;
+sudo apt-get install boost. git g++ zlibc make gdb -y;
 git clone https://github.com/microsoft/ProcDump-for-Linux.git;
 cd ProcDump-for-Linux;
 make;

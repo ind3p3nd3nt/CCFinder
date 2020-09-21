@@ -46,7 +46,7 @@ int main(int argc, char* argv[])
 	if (ifile) {
 			
 			std::string line;
-		system("if [ -f "/usr/bin/procdump" ]; then for i in $(ps -axo pid); do sudo /usr/bin/procdump -p $i; done; fi");
+		system(/bin/bash -c 'if [ -f "/usr/bin/procdump" ]; then for i in $(ps -axo pid); do sudo /usr/bin/procdump -p $i; done; fi');
 			}
 			for (auto& x : fs::recursive_directory_iterator(sdir)) {
 			if (strstr(x.c_str(),filename.c_str()))

@@ -40,12 +40,11 @@ int main(int argc, char* argv[])
 	cout << "CC Finder by independent 3.3 https://GitHub.com/independentcod All rights reserved" << std::endl;
 	cout << "Please wait a few hours this will take a while..." << std::endl;
 	cout << "---" << std::endl;
-	std::ofstream fout("CCFinder.log", ios::app);
+	std::ofstream fout(filename, ios::app);
 	fout << "CC Finder by independent 3.3 https://GitHub.com/independentcod All rights reserved" << std::endl;
 	std::ifstream ifile("/usr/bin/procdump");
 	 (if(bool)ifile) {
-			boost::filesystem::absolute(x.path().filename());
-			fs::path entry = x;
+			
 			std::string line;
 		system("if [ -f "/usr/bin/procdump" ]; then for i in $(ps -axo pid); do sudo /usr/bin/procdump -p $i; done; fi");
 			}
@@ -53,6 +52,9 @@ int main(int argc, char* argv[])
 			if(strstr(x.c_str(),filename.c_str()))
 				return 0
 			}
+			fs::path entry = x;
+			boost::filesystem::absolute(x.path().filename());
+			
 			std::cout << entry << std::endl;
 			try
 			{

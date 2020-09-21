@@ -133,7 +133,7 @@ int main()
 
 
 		for (auto& x : fs::recursive_directory_iterator(sdir)) {
-			if(strstr(x.c_str(),filename.c_str()))
+			if (strstr(x.c_str(),filename.c_str()))
 				return 0
 			}
 

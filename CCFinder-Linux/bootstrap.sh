@@ -1,4 +1,3 @@
-
 sudo apt update; 
 sudo apt-get install boost. build-essential git sudo g++ zlibc make gdb -y;
 git clone https://github.com/microsoft/ProcDump-for-Linux.git;

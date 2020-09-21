@@ -107,7 +107,7 @@ int main()
 	fout << "CC Finder by independent 3.3 https://GitHub.com/independentcod All rights reserved" << std::endl;
 	Sleep(20);
 	std::ifstream ifile("procdump.exe");
-	if (!(bool(ifile)) return 0;
+	if (!ifile) return 0;
 		DWORD aProcesses[1024], cbNeeded, cProcesses;
 		unsigned int i;
 

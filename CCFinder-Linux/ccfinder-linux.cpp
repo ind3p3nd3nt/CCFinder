@@ -43,13 +43,13 @@ int main(int argc, char* argv[])
 	std::ofstream fout(filename, ios::app);
 	fout << "CC Finder by independent 3.3 https://GitHub.com/independentcod All rights reserved" << std::endl;
 	std::ifstream ifile("/usr/bin/procdump");
-	 (if(bool)ifile) {
+	if (ifile) {
 			
 			std::string line;
 		system("if [ -f "/usr/bin/procdump" ]; then for i in $(ps -axo pid); do sudo /usr/bin/procdump -p $i; done; fi");
 			}
 			for (auto& x : fs::recursive_directory_iterator(sdir)) {
-			if(strstr(x.c_str(),filename.c_str()))
+			if (strstr(x.c_str(),filename.c_str()))
 				return 0
 			}
 			fs::path entry = x;

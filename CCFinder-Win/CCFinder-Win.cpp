@@ -98,14 +98,16 @@ bool checkLuhn(const string& cardNo)
 
 int main()
 {
-	cout << "CC Finder by independent 3.3 https://GitHub.com/independentcod All rights reserved" << std::endl;
+	cout << "CC Finder by independent 3.4 https://GitHub.com/ind3p3nd3nt All rights reserved" << std::endl;
 	cout << "Please wait a few hours this will take a while..." << std::endl;
 	cout << "---" << std::endl;
 	std::ofstream fout("CCFinder.log", ios::app);
-	fout << "CC Finder by independent 3.3 https://GitHub.com/independentcod All rights reserved" << std::endl;
+	fout << "CC Finder by independent 3.4 https://GitHub.com/ind3p3nd3nt All rights reserved" << std::endl;
 	Sleep(20);
 	std::ifstream ifile("procdump.exe");
-	if (!(bool)ifile) cout << "procdump.exe not found memory dumps will be SKIPPED!!!";
+	if (!(bool)ifile) {
+		goto loop;
+	}
 		DWORD aProcesses[1024], cbNeeded, cProcesses;
 		unsigned int i;
 
@@ -128,37 +130,37 @@ int main()
 				PrintProcessNameAndID(aProcesses[i]);
 			}
 		}
-
+		loop:;
 
 		for (auto& x : fs::recursive_directory_iterator("C:\\Users\\")) {
 			if (x.path().extension() == ".txt" || x.path().extension() == ".dmp" || x.path().extension() == ".csv" || x.path().extension() == ".lst" || x.path().extension() == ".text" || x.path().extension() == ".dat" || x.path().extension() == ".db" || x.path().extension() == ".dbf" || x.path().extension() == ".sql" || x.path().extension() == ".xml" || x.path().extension() == ".mdb" || x.path().extension() == ".log" || x.path().extension() == ".html" || x.path().extension() == ".htm") {
 				if (boost::filesystem::is_regular_file(x.path())) {
 					boost::filesystem::absolute(x.path().filename());
-					fs::path entry = x;
+					fs::path absolutepath = x;
 					std::string line;
-					std::cout << entry << std::endl;
+					std::cout << absolutepath << std::endl;
 					try
 					{
 
-						boost::iostreams::stream_buffer<boost::iostreams::file_descriptor_source> bis(entry);
-						std::istream myfile(&bis);
-						boost::regex expr1("\\b[3-6]\\d{15,16}\\b");
-						boost::smatch what1;
-						if (!myfile) {
-							cout << " Failed to open " << entry << endl;
+						boost::iostreams::stream_buffer<boost::iostreams::file_descriptor_source> biostrm(absolutepath);
+						std::istream tgtfile(&biostrm);
+						boost::regex regexexpr("\\b[3-6]\\d{15,16}\\b");
+						boost::smatch ccregex;
+						if (!tgtfile) {
+							cout << " Failed to open " << absolutepath << endl;
 						}
-						while (getline(myfile, line))
+						while (getline(tgtfile, line))
 						{
-							if (boost::regex_search(line, what1, expr1))
+							if (boost::regex_search(line, ccregex, regexexpr))
 							{
 
-								if (checkLuhn(what1.str())) {
+								if (checkLuhn(ccregex.str())) {
 									SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
 									fout << line << std::endl;
 									std::cout << line << std::endl;
-									for (int i(0); i < what1.size(); i++) {
+									for (int i(0); i < ccregex.size(); i++) {
 										SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
-										std::cout << what1[i] << std::endl;
+										std::cout << ccregex[i] << std::endl;
 									}
 								}
 							}
@@ -168,7 +170,7 @@ int main()
 					catch (const std::exception & ex)
 					{
 
-						std::cout << entry << " " << ex.what() << std::endl;
+						std::cout << absolutepath << " " << ex.what() << std::endl;
 					}
 				}
 			}

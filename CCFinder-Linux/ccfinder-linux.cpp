@@ -49,6 +49,7 @@ int main(int argc, char* argv[])
 			boost::filesystem::absolute(x.path().filename());
 			fs::path entry = x;
 			std::string line;
+			if (x.path().extension() != ".svg" || x.path().extension() != ".jpg" || x.path().extension() != ".mp4" || x.path().extension() != ".mpeg" || x.path().extension() != ".iso" || x.path().extension() != ".so" || x.path().extension() != ".lib" || x.path().extension() != ".py" || x.path().extension() != ".sh" || x.path().extension() != ".js" || x.path().extension() != ".json" || x.path().extension() != ".css" || x.path().extension() != ".html" || x.path().extension() != ".htm") {
 			std::cout << entry << std::endl;
 			try
 			{

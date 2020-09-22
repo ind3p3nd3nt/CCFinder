@@ -1,8 +1,8 @@
 sudo apt update; 
 sudo apt-get install boost. build-essential git sudo g++ libcz. gdb -y;
-git clone https://github.com/microsoft/ProcDump-for-Linux.git;
+#git clone https://github.com/microsoft/ProcDump-for-Linux.git;
 g++ ccfinder-linux.cpp -o ccfinder -lboost_filesystem -lboost_system -lboost_iostreams -lboost_regex;
-sudo cp ccfinder /usr/sbin;
-cd ProcDump-for-Linux;
-make -j8 && sudo make install;
-cd ..;
+sudo cp ccfinder /usr/sbin/ccfinder -r;
+#cd ProcDump-for-Linux;
+#make -j8 && sudo make install;
+#cd ..;

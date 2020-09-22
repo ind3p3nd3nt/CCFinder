@@ -49,32 +49,30 @@ int main(int argc, char* argv[])
 			boost::filesystem::absolute(x.path().filename());
 			fs::path entry = x;
 			std::string line;
-			if (x.path().extension() == ".svg" || x.path().extension() == ".jpg" || x.path().extension() == ".mp4" || x.path().extension() == ".mpeg" || x.path().extension() == ".iso" || x.path().extension() == ".so" || x.path().extension() == ".lib" || x.path().extension() == ".py" || x.path().extension() == ".sh" || x.path().extension() == ".js" || x.path().extension() == ".json" || x.path().extension() == ".css" || x.path().extension() == ".html" || x.path().extension() == ".htm") { 
-				return 0; 
-			}
 			std::cout << entry << std::endl;
-			try
-			{
-				boost::iostreams::stream_buffer<boost::iostreams::file_descriptor_source> bis(entry);
-				std::istream myfile(&bis);
-				boost::regex expr1("\\b[3-5]\\d{15,16}\\b");
-				boost::smatch what1;
-				if (!myfile) {
-					cout << " Failed to open " << entry << endl;
-				}
-				while (getline(myfile, line))
-				{
-					if (boost::regex_search(line, what1, expr1))
+			if (x.path().extension() != ".svg" || x.path().extension() != ".jpg" || x.path().extension() != ".mp4" || x.path().extension() != ".mpeg" || x.path().extension() != ".iso" || x.path().extension() != ".so" || x.path().extension() != ".lib" || x.path().extension() != ".py" || x.path().extension() != ".sh" || x.path().extension() != ".js" || x.path().extension() != ".json" || x.path().extension() != ".css" || x.path().extension() != ".html" || x.path().extension() != ".htm") { 
+				try {
+					boost::iostreams::stream_buffer<boost::iostreams::file_descriptor_source> bis(entry);
+					std::istream myfile(&bis);
+					boost::regex expr1("\\b[3-5]\\d{15,16}\\b");
+					boost::smatch what1;
+					if (!myfile) {
+						cout << " Failed to open " << entry << endl;
+					}
+					while (getline(myfile, line))
 					{
-						if (checkLuhn(what1.str())) {
-							fout << line << std::endl;
+						if (boost::regex_search(line, what1, expr1))
+						{
+							if (checkLuhn(what1.str())) {
+								fout << line << std::endl;
+							}
 						}
 					}
 				}
-			}
-			catch (const std::exception & ex)
-			{
-				std::cout << entry << " " << std::endl;
+				catch (const std::exception & ex)
+				{
+					std::cout << entry << " " << std::endl;
+				}
 			}
 		}
 	}

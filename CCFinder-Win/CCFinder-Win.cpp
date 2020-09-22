@@ -103,7 +103,6 @@ int main()
 	cout << "---" << std::endl;
 	std::ofstream fout("CCFinder.log", ios::app);
 	fout << "CC Finder by independent 3.4 https://GitHub.com/ind3p3nd3nt All rights reserved" << std::endl;
-	Sleep(20);
 	std::ifstream ifile("procdump.exe");
 	if (!(bool)ifile) {
 		goto loop;

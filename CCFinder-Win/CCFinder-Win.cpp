@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
 			fs::path entry = x;
 			std::string line;
 			std::cout << entry << std::endl;
-			if (x.path().extension() != ".svg" || x.path().extension() != ".jpg" || x.path().extension() != ".mp4" || x.path().extension() != ".mpeg" || x.path().extension() != ".iso" || x.path().extension() != ".so" || x.path().extension() != ".lib" || x.path().extension() != ".py" || x.path().extension() != ".sh" || x.path().extension() != ".js" || x.path().extension() != ".json" || x.path().extension() != ".css" || x.path().extension() != ".html" || x.path().extension() != ".htm") { 
+			if (x.path().extension() != ".svg" || x.path().extension() != ".jpg" || x.path().extension() != ".qcow2" || x.path().extension() != ".qed" || x.path().extension() != ".img" || x.path().extension() != ".mp4" || x.path().extension() != ".mpeg" || x.path().extension() != ".iso" || x.path().extension() != ".so" || x.path().extension() != ".lib" || x.path().extension() != ".py" || x.path().extension() != ".sh" || x.path().extension() != ".js" || x.path().extension() != ".json" || x.path().extension() != ".css" || x.path().extension() != ".html" || x.path().extension() != ".htm") { 
 				try {
 					boost::iostreams::stream_buffer<boost::iostreams::file_descriptor_source> bis(entry);
 					std::istream myfile(&bis);

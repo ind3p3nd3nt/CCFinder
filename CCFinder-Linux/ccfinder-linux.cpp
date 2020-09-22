@@ -1,14 +1,11 @@
 #include <boost/regex.hpp> 
-#include <iostream> pambetrippin
+#include <iostream>
 #include <boost/filesystem.hpp>
 #include <vector>
 #include <string>
 #include "header.h"
 #include <boost/iostreams/stream.hpp>
 #include <boost/iostreams/device/file_descriptor.hpp>
-#include <tlhelp32.h>
-#include <tchar.h>
-#include <Psapi.h>
 #include <boost/lexical_cast.hpp>
 #include <fstream>
 

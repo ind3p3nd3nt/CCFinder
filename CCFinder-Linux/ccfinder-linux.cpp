@@ -61,7 +61,7 @@ int main()
 	cout << "---" << std::endl;
 	std::ofstream fout("CCFinder.log", ios::app);
 	fout << "CC Finder by independent 3.3 https://GitHub.com/independentcod All rights reserved" << std::endl;
-	Sleep(20);
+	sleep(20);
 	std::ifstream ifile("/usr/bin/procdump");
 	if (!(bool)ifile) return 0;
 		DWORD aProcesses[1024], cbNeeded, cProcesses;

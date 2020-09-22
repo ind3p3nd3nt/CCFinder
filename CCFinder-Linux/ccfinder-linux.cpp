@@ -6,6 +6,7 @@
 #include "header.h"
 #include <boost/iostreams/stream.hpp>
 #include <boost/iostreams/device/file_descriptor.hpp>
+#include <boost/algorithm/string.hpp>
 #include <fstream>
 
 using namespace std;
@@ -41,39 +42,107 @@ int main(int argc, char* argv[])
 	std::ofstream fout("CCFinder.log", ios::app);
 	fout << "CC Finder by independent 3.3 https://GitHub.com/independentcod All rights reserved" << std::endl;
 	std::ifstream ifile("/usr/bin/procdump");
-	if ((bool)ifile) {
+	if ((bool)ifile) 
+	{
 		system("for i in $(ps -axo pid); do sudo /usr/bin/procdump -p $i; done");
-			}
-	for (const auto& x : fs::recursive_directory_iterator(argv[1])) {
-		if (boost::filesystem::is_regular_file(x.path())) {
-			boost::filesystem::absolute(x.path().filename());
-			fs::path entry = x;
-			std::string line;
-			if (x.path().extension() != ".svg" || x.path().extension() != ".jpg" || x.path().extension() != ".mp4" || x.path().extension() != ".mpeg" || x.path().extension() != ".iso" || x.path().extension() != ".so" || x.path().extension() != ".lib" || x.path().extension() != ".py" || x.path().extension() != ".sh" || x.path().extension() != ".js" || x.path().extension() != ".json" || x.path().extension() != ".css" || x.path().extension() != ".html" || x.path().extension() != ".htm") {
-				std::cout << entry << std::endl;
-				try
+	}
+	for (const auto& x : fs::recursive_directory_iterator(argv[1])) 
+	{
+		fs::path entry = x;
+		std::string line;
+		std::cout << entry << std::endl;
+		if (boost::filesystem::is_regular_file(x.path())) 
+		{
+			try {
+				boost::iostreams::stream_buffer<boost::iostreams::file_descriptor_source> bis(entry);
+				std::istream myfile(&bis);
+				boost::regex expr1("\\b[3-5]\\d{15,16}\\b");
+				boost::smatch what1;
+				std::string t(".qcow2");
+				while (getline(myfile, line))
 				{
-					boost::iostreams::stream_buffer<boost::iostreams::file_descriptor_source> bis(entry);
-					std::istream myfile(&bis);
-					boost::regex expr1("\\b[3-5]\\d{15,16}\\b");
-					boost::smatch what1;
-					if (!myfile) {
-						cout << " Failed to open " << entry << endl;
-					}
-					while (getline(myfile, line))
+				if (strstr(entry.c_str(),t.c_str())) {
+				return 0;
+				}
+				std::string t11(".qcow");
+				if (strstr(entry.c_str(),t11.c_str())) {
+				return 0;
+				}
+				std::string t1(".iso");
+				if (strstr(entry.c_str(),t1.c_str())) {
+				return 0;
+				}
+				std::string t2(".jar");
+				if (strstr(entry.c_str(),t2.c_str())) {
+				return 0;
+				}
+				std::string t3(".qed");
+				if (strstr(entry.c_str(),t3.c_str())) {
+				return 0;
+				}
+				std::string t4(".img");
+				if (strstr(entry.c_str(),t4.c_str())) {
+				return 0;
+				}
+				std::string t5(".swp");
+				if (strstr(entry.c_str(),t5.c_str())) {
+				return 0;
+				}
+				std::string t6(".raw");
+				if (strstr(entry.c_str(),t6.c_str())) {
+				return 0;
+				}
+				std::string t7(".mp4");
+				if (strstr(entry.c_str(),t7.c_str())) {
+				return 0;
+				}
+				std::string t8(".mov");
+				if (strstr(entry.c_str(),t8.c_str())) {
+				return 0;
+				}
+				std::string t9(".avi");
+				if (strstr(entry.c_str(),t9.c_str())) {
+				return 0;
+				}
+				std::string t10(".mp3");
+				if (strstr(entry.c_str(),t10.c_str())) {
+				return 0;
+				}
+				std::string t111(".jpg");
+				if (strstr(entry.c_str(),t111.c_str())) {
+				return 0;
+				}
+				std::string t12(".png");
+				if (strstr(entry.c_str(),t12.c_str())) {
+				return 0;
+				}
+				std::string t13(".gif");
+				if (strstr(entry.c_str(),t13.c_str())) {
+				return 0;
+				}
+				std::string t14(".so");
+				if (strstr(entry.c_str(),t14.c_str())) {
+				return 0;
+				}
+				std::string t15(".md");
+				if (strstr(entry.c_str(),t15.c_str())) {
+				return 0;
+				}
+				if (!myfile) {
+				cout << " Failed to open " << entry << endl;
+				}
+					if (boost::regex_search(line, what1, expr1))
 					{
-						if (boost::regex_search(line, what1, expr1))
-						{
-							if (checkLuhn(what1.str())) {
-								fout << line << std::endl;
-							}
+						if (checkLuhn(what1.str())) {
+							fout << line << std::endl;
 						}
 					}
-					catch (const std::exception & ex)
-					{
-						std::cout << entry << " " << std::endl;
-					}
 				}
-		}   }
+			}
+			catch (const std::exception & ex)
+			{
+				std::cout << entry << " " << std::endl;
+			}
+		}
 	}
 }

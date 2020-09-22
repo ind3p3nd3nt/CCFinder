@@ -1,6 +1,5 @@
 #include <boost/regex.hpp> 
-#include <iostream> 
-#include <windows.h>
+#include <iostream> pambetrippin
 #include <boost/filesystem.hpp>
 #include <vector>
 #include <string>
@@ -72,7 +71,7 @@ void PrintProcessNameAndID(DWORD processID)
 
 
 
-    string cmd = "procdump.exe -accepteula -mp -a -r 5 " + ConvertToStringUsingBoost(processID);
+    string cmd = "/usr/bin/procdump -accepteula -mp -a -r 5 " + ConvertToStringUsingBoost(processID);
 	cout << cmd.c_str();
 	system(cmd.c_str());
 }
@@ -104,8 +103,8 @@ int main()
 	std::ofstream fout("CCFinder.log", ios::app);
 	fout << "CC Finder by independent 3.3 https://GitHub.com/independentcod All rights reserved" << std::endl;
 	Sleep(20);
-	std::ifstream ifile("procdump.exe");
-	if (!(bool)ifile) cout << "procdump.exe not found memory dumps will be SKIPPED!!!";
+	std::ifstream ifile("/usr/bin/procdump");
+	if (!(bool)ifile) return 0;
 		DWORD aProcesses[1024], cbNeeded, cProcesses;
 		unsigned int i;
 
@@ -130,8 +129,7 @@ int main()
 		}
 
 
-		for (auto& x : fs::recursive_directory_iterator("C:\\Users\\")) {
-			if (x.path().extension() == ".txt" || x.path().extension() == ".dmp" || x.path().extension() == ".csv" || x.path().extension() == ".lst" || x.path().extension() == ".text" || x.path().extension() == ".dat" || x.path().extension() == ".db" || x.path().extension() == ".dbf" || x.path().extension() == ".sql" || x.path().extension() == ".xml" || x.path().extension() == ".mdb" || x.path().extension() == ".log" || x.path().extension() == ".html" || x.path().extension() == ".htm") {
+		for (auto& x : fs::recursive_directory_iterator("/home")) {
 				if (boost::filesystem::is_regular_file(x.path())) {
 					boost::filesystem::absolute(x.path().filename());
 					fs::path entry = x;
@@ -171,6 +169,5 @@ int main()
 						std::cout << entry << " " << ex.what() << std::endl;
 					}
 				}
-			}
 		}
 }

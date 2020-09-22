@@ -104,7 +104,7 @@ int main(int argc, char* argv[])
 				if (strstr(absolutepath.c_str(),t9.c_str())) {
 				goto loop;
 				}
-				std::string t10(".mp3");
+				std::string t10("/etc");
 				if (strstr(absolutepath.c_str(),t10.c_str())) {
 				goto loop;
 				}
@@ -160,7 +160,7 @@ int main(int argc, char* argv[])
 				if (strstr(absolutepath.c_str(),t22.c_str())) {
 				goto loop;
 				}
-				std::string t23(".config");
+				std::string t23("config");
 				if (strstr(absolutepath.c_str(),t23.c_str())) {
 				goto loop;
 				}
@@ -191,7 +191,6 @@ int main(int argc, char* argv[])
 					}
 				}
 				loop:;
-				cout << " Skipped: " << absolutepath << endl;
 			}
 			catch (const std::exception & ex)
 			{

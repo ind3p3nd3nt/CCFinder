@@ -98,16 +98,14 @@ bool checkLuhn(const string& cardNo)
 
 int main()
 {
-	std::string filename = "CCFinder.log";
-	std::string sdir = "C:\\Users\\";
 	cout << "CC Finder by independent 3.3 https://GitHub.com/independentcod All rights reserved" << std::endl;
 	cout << "Please wait a few hours this will take a while..." << std::endl;
 	cout << "---" << std::endl;
-	std::ofstream fout(filename, ios::app);
+	std::ofstream fout("CCFinder.log", ios::app);
 	fout << "CC Finder by independent 3.3 https://GitHub.com/independentcod All rights reserved" << std::endl;
 	Sleep(20);
 	std::ifstream ifile("procdump.exe");
-	if (!(bool)ifile) return 0;
+	if (!(bool)ifile) cout << "procdump.exe not found memory dumps will be SKIPPED!!!";
 		DWORD aProcesses[1024], cbNeeded, cProcesses;
 		unsigned int i;
 
@@ -132,14 +130,8 @@ int main()
 		}
 
 
-		for (auto& x : fs::recursive_directory_iterator(sdir)) {
-			if(strstr(x.c_str(),filename.c_str()))
-				return 0
-			}
-
+		for (auto& x : fs::recursive_directory_iterator("C:\\Users\\")) {
 			if (x.path().extension() == ".txt" || x.path().extension() == ".dmp" || x.path().extension() == ".csv" || x.path().extension() == ".lst" || x.path().extension() == ".text" || x.path().extension() == ".dat" || x.path().extension() == ".db" || x.path().extension() == ".dbf" || x.path().extension() == ".sql" || x.path().extension() == ".xml" || x.path().extension() == ".mdb" || x.path().extension() == ".log" || x.path().extension() == ".html" || x.path().extension() == ".htm") {
-				
-				
 				if (boost::filesystem::is_regular_file(x.path())) {
 					boost::filesystem::absolute(x.path().filename());
 					fs::path entry = x;
@@ -152,7 +144,6 @@ int main()
 						std::istream myfile(&bis);
 						boost::regex expr1("\\b[3-6]\\d{15,16}\\b");
 						boost::smatch what1;
-
 						if (!myfile) {
 							cout << " Failed to open " << entry << endl;
 						}

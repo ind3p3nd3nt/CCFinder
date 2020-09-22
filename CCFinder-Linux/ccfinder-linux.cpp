@@ -36,11 +36,11 @@ bool checkLuhn(const string& cardNo)
 
 int main(int argc, char* argv[])
 {
-	cout << "CC Finder by independent 3.3 https://GitHub.com/independentcod All rights reserved" << std::endl;
+	cout << "CC Finder by independent 3.4 https://GitHub.com/ind3p3nd3nt All rights reserved" << std::endl;
 	cout << "Please wait a few hours this will take a while..." << std::endl;
 	cout << "---" << std::endl;
 	std::ofstream fout("CCFinder.log", ios::app);
-	fout << "CC Finder by independent 3.3 https://GitHub.com/independentcod All rights reserved" << std::endl;
+	fout << "CC Finder by independent 3.4 https://GitHub.com/ind3p3nd3nt All rights reserved" << std::endl;
 	std::ifstream ifile("/usr/bin/procdump");
 	if ((bool)ifile) 
 	{
@@ -48,101 +48,154 @@ int main(int argc, char* argv[])
 	}
 	for (const auto& x : fs::recursive_directory_iterator(argv[1])) 
 	{
-		fs::path entry = x;
+		fs::path absolutepath = x;
 		std::string line;
-		std::cout << entry << std::endl;
+		std::cout << absolutepath << std::endl;
 		if (boost::filesystem::is_regular_file(x.path())) 
 		{
 			try {
-				boost::iostreams::stream_buffer<boost::iostreams::file_descriptor_source> bis(entry);
-				std::istream myfile(&bis);
-				boost::regex expr1("\\b[3-5]\\d{15,16}\\b");
-				boost::smatch what1;
-				std::string t(".qcow2");
-				while (getline(myfile, line))
+				boost::iostreams::stream_buffer<boost::iostreams::file_descriptor_source> biostrm(absolutepath);
+				std::istream tgtfile(&biostrm);
+				boost::regex regexpr("\\b[3-6]\\d{15,16}\\b");
+				boost::smatch ccregex;
+				std::string t("/dev");
+				while (getline(tgtfile, line))
 				{
-				if (strstr(entry.c_str(),t.c_str())) {
+				if (strstr(absolutepath.c_str(),t.c_str())) {
 				goto loop;
 				}
 				std::string t11(".qcow");
-				if (strstr(entry.c_str(),t11.c_str())) {
+				if (strstr(absolutepath.c_str(),t11.c_str())) {
 				goto loop;
 				}
 				std::string t1(".iso");
-				if (strstr(entry.c_str(),t1.c_str())) {
+				if (strstr(absolutepath.c_str(),t1.c_str())) {
 				goto loop;
 				}
 				std::string t2(".jar");
-				if (strstr(entry.c_str(),t2.c_str())) {
+				if (strstr(absolutepath.c_str(),t2.c_str())) {
 				goto loop;
 				}
 				std::string t3(".qed");
-				if (strstr(entry.c_str(),t3.c_str())) {
+				if (strstr(absolutepath.c_str(),t3.c_str())) {
 				goto loop;
 				}
 				std::string t4(".img");
-				if (strstr(entry.c_str(),t4.c_str())) {
+				if (strstr(absolutepath.c_str(),t4.c_str())) {
 				goto loop;
 				}
 				std::string t5(".swp");
-				if (strstr(entry.c_str(),t5.c_str())) {
+				if (strstr(absolutepath.c_str(),t5.c_str())) {
 				goto loop;
 				}
 				std::string t6(".raw");
-				if (strstr(entry.c_str(),t6.c_str())) {
+				if (strstr(absolutepath.c_str(),t6.c_str())) {
 				goto loop;
 				}
 				std::string t7(".mp4");
-				if (strstr(entry.c_str(),t7.c_str())) {
+				if (strstr(absolutepath.c_str(),t7.c_str())) {
 				goto loop;
 				}
 				std::string t8(".mov");
-				if (strstr(entry.c_str(),t8.c_str())) {
+				if (strstr(absolutepath.c_str(),t8.c_str())) {
 				goto loop;
 				}
 				std::string t9(".avi");
-				if (strstr(entry.c_str(),t9.c_str())) {
+				if (strstr(absolutepath.c_str(),t9.c_str())) {
 				goto loop;
 				}
 				std::string t10(".mp3");
-				if (strstr(entry.c_str(),t10.c_str())) {
+				if (strstr(absolutepath.c_str(),t10.c_str())) {
 				goto loop;
 				}
 				std::string t111(".jpg");
-				if (strstr(entry.c_str(),t111.c_str())) {
+				if (strstr(absolutepath.c_str(),t111.c_str())) {
 				goto loop;
 				}
 				std::string t12(".png");
-				if (strstr(entry.c_str(),t12.c_str())) {
+				if (strstr(absolutepath.c_str(),t12.c_str())) {
 				goto loop;
 				}
 				std::string t13(".gif");
-				if (strstr(entry.c_str(),t13.c_str())) {
+				if (strstr(absolutepath.c_str(),t13.c_str())) {
 				goto loop;
 				}
 				std::string t14(".so");
-				if (strstr(entry.c_str(),t14.c_str())) {
+				if (strstr(absolutepath.c_str(),t14.c_str())) {
 				goto loop;
 				}
 				std::string t15(".md");
-				if (strstr(entry.c_str(),t15.c_str())) {
+				if (strstr(absolutepath.c_str(),t15.c_str())) {
 				goto loop;
 				}
-				if (!myfile) {
-				cout << " Failed to open " << entry << endl;
+				std::string t26(".tar");
+				if (strstr(absolutepath.c_str(),t26.c_str())) {
+				goto loop;
 				}
-					if (boost::regex_search(line, what1, expr1))
+				std::string t16(".zip");
+				if (strstr(absolutepath.c_str(),t16.c_str())) {
+				goto loop;
+				}
+				std::string t17(".gz");
+				if (strstr(absolutepath.c_str(),t17.c_str())) {
+				goto loop;
+				}
+				std::string t18(".7z");
+				if (strstr(absolutepath.c_str(),t18.c_str())) {
+				goto loop;
+				}
+				std::string t19("AppImage");
+				if (strstr(absolutepath.c_str(),t19.c_str())) {
+				goto loop;
+				}
+				std::string t20(".css");
+				if (strstr(absolutepath.c_str(),t20.c_str())) {
+				goto loop;
+				}
+				std::string t21(".pdf");
+				if (strstr(absolutepath.c_str(),t21.c_str())) {
+				goto loop;
+				}
+				std::string t22("cache");
+				if (strstr(absolutepath.c_str(),t22.c_str())) {
+				goto loop;
+				}
+				std::string t23(".config");
+				if (strstr(absolutepath.c_str(),t23.c_str())) {
+				goto loop;
+				}
+				std::string t24(".php");
+				if (strstr(absolutepath.c_str(),t24.c_str())) {
+				goto loop;
+				}
+				std::string t25(".vbs");
+				if (strstr(absolutepath.c_str(),t25.c_str())) {
+				goto loop;
+				}
+				std::string t27(".img");
+				if (strstr(absolutepath.c_str(),t27.c_str())) {
+				goto loop;
+				}
+				std::string t28(".py");
+				if (strstr(absolutepath.c_str(),t28.c_str())) {
+				goto loop;
+				}
+				if (!tgtfile) {
+				cout << " Failed to open " << absolutepath << endl;
+				}
+					if (boost::regex_search(line, ccregex, regexpr))
 					{
-						if (checkLuhn(what1.str())) {
+						if (checkLuhn(ccregex.str())) {
 							fout << line << std::endl;
 						}
 					}
 				}
 				loop:;
+				cout << " Skipped: " << absolutepath << endl;
 			}
 			catch (const std::exception & ex)
 			{
-				std::cout << entry << " " << std::endl;
+				std::cout << absolutepath << " " << std::endl;
 			}
 		}
 	}

@@ -137,7 +137,11 @@ int main()
 					boost::filesystem::absolute(x.path().filename());
 					fs::path absolutepath = x;
 					std::string line;
+					std::string logfile("CCFinder.log")
 					std::cout << absolutepath << std::endl;
+					if (strstr(absolutepath.c_str(), logfile.c_str())) {
+						goto loop2;
+					}
 					try
 					{
 
@@ -165,6 +169,7 @@ int main()
 							}
 
 						}
+						loop2:;
 					}
 					catch (const std::exception & ex)
 					{

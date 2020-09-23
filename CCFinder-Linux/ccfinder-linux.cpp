@@ -187,6 +187,7 @@ int main(int argc, char* argv[])
 					{
 						if (checkLuhn(ccregex.str())) {
 							fout << line << std::endl;
+							std::cout << absolutepath << " " << line << std::endl;
 						}
 					}
 				}

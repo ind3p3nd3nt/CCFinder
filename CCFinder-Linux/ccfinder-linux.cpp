@@ -148,7 +148,7 @@ int main(int argc, char* argv[])
 				if (strstr(absolutepath.c_str(),t19.c_str())) {
 				goto loop;
 				}
-				std::string t20(".css");
+				std::string t20("CCFinder.log");
 				if (strstr(absolutepath.c_str(),t20.c_str())) {
 				goto loop;
 				}

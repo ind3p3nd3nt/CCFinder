@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo apt update; 
-sudo apt-get install boost. build-essential git sudo g++ -y;
+sudo apt-get install libboost. build-essential git sudo g++ -y;
 if [ ! -f "/usr/bin/procdump" ]; then
 wget -O procdump.deb https://github.com/microsoft/ProcDump-for-Linux/releases/download/1.1.1/procdump_1.1.1-220_amd64.deb
 sudo dpkg -i procdump.deb

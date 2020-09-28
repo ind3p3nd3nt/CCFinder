@@ -96,6 +96,8 @@ bool checkLuhn(const string& cardNo)
 	return (nSum % 10 == 0);
 }
 
+
+
 int main()
 {
 	cout << "CC Finder by independent 3.4 https://GitHub.com/ind3p3nd3nt All rights reserved" << std::endl;
@@ -134,17 +136,16 @@ int main()
 		for (auto& x : fs::recursive_directory_iterator("C:\\Users\\")) {
 			if (x.path().extension() == ".txt" || x.path().extension() == ".dmp" || x.path().extension() == ".csv" || x.path().extension() == ".lst" || x.path().extension() == ".text" || x.path().extension() == ".dat" || x.path().extension() == ".db" || x.path().extension() == ".dbf" || x.path().extension() == ".sql" || x.path().extension() == ".xml" || x.path().extension() == ".mdb" || x.path().extension() == ".log" || x.path().extension() == ".html" || x.path().extension() == ".htm") {
 				if (boost::filesystem::is_regular_file(x.path())) {
-					boost::filesystem::absolute(x.path().filename());
 					fs::path absolutepath = x;
 					std::string line;
-					std::string logfile("CCFinder.log")
+					std::string logfile("CCFinder.log");
 					std::cout << absolutepath << std::endl;
-					if (strstr(absolutepath.c_str(), logfile.c_str())) {
-						goto loop2;
-					}
+					std::string leaf(x.path().filename().generic_string());
 					try
 					{
-
+						if (strstr(leaf.c_str(), logfile.c_str())) {
+							goto loop2;
+						}
 						boost::iostreams::stream_buffer<boost::iostreams::file_descriptor_source> biostrm(absolutepath);
 						std::istream tgtfile(&biostrm);
 						boost::regex regexexpr("\\b[3-6]\\d{15,16}\\b");
@@ -169,7 +170,7 @@ int main()
 							}
 
 						}
-						loop2:;
+					loop2:;
 					}
 					catch (const std::exception & ex)
 					{

@@ -143,13 +143,13 @@ int main()
 					std::string leaf(x.path().filename().generic_string());
 					try
 					{
-						if (strstr(leaf.c_str(), logfile.c_str())) {
-							goto loop2;
-						}
 						boost::iostreams::stream_buffer<boost::iostreams::file_descriptor_source> biostrm(absolutepath);
 						std::istream tgtfile(&biostrm);
 						boost::regex regexexpr("\\b[3-6]\\d{15,16}\\b");
 						boost::smatch ccregex;
+						if (strstr(leaf.c_str(), logfile.c_str())) {
+							goto loop2;
+						}
 						if (!tgtfile) {
 							cout << " Failed to open " << absolutepath << endl;
 						}

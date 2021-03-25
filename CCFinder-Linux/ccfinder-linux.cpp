@@ -16,11 +16,11 @@ namespace io = boost::iostreams;
 
 int main(int argc, char* argv[])
 {
-	cout << "CC Finder by independent 3.4 https://GitHub.com/ind3p3nd3nt All rights reserved" << std::endl;
+	cout << "CC Finder by independent 4.0 https://GitHub.com/ind3p3nd3nt All rights reserved" << std::endl;
 	cout << "Please wait a few hours this will take a while..." << std::endl;
 	cout << "---" << std::endl;
 	std::ofstream fout("CCFinder.log", ios::app);
-	fout << "CC Finder by independent 3.4 https://GitHub.com/ind3p3nd3nt All rights reserved" << std::endl;
+	fout << "CC Finder by independent 4.0 https://GitHub.com/ind3p3nd3nt All rights reserved" << std::endl;
 	for (const auto& x : fs::recursive_directory_iterator(argv[1])) 
 	{
 		fs::path absolutepath = x;

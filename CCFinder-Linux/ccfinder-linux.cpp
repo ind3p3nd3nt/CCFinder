@@ -14,26 +14,6 @@ using namespace boost::filesystem;
 namespace fs = boost::filesystem;
 namespace io = boost::iostreams;
 
-
-bool checkLuhn(const string& cardNo)
-{
-	int nDigits = cardNo.length();
-
-	int nSum = 0, isSecond = false;
-	for (int i = nDigits - 1; i >= 0; i--) {
-
-		int d = cardNo[i] - '0';
-
-		if (isSecond == true)
-			d = d * 2;
-		nSum += d / 10;
-		nSum += d % 10;
-
-		isSecond = !isSecond;
-	}
-	return (nSum % 10 == 0);
-}
-
 int main(int argc, char* argv[])
 {
 	cout << "CC Finder by independent 3.4 https://GitHub.com/ind3p3nd3nt All rights reserved" << std::endl;
@@ -41,11 +21,6 @@ int main(int argc, char* argv[])
 	cout << "---" << std::endl;
 	std::ofstream fout("CCFinder.log", ios::app);
 	fout << "CC Finder by independent 3.4 https://GitHub.com/ind3p3nd3nt All rights reserved" << std::endl;
-	std::ifstream ifile("/usr/bin/procdump");
-	if ((bool)ifile) 
-	{
-		system("for i in $(ps -axo pid); do sudo /usr/bin/procdump -p $i; done");
-	}
 	for (const auto& x : fs::recursive_directory_iterator(argv[1])) 
 	{
 		fs::path absolutepath = x;
@@ -185,7 +160,7 @@ int main(int argc, char* argv[])
 				}
 					if (boost::regex_search(line, ccregex, regexpr))
 					{
-						if (checkLuhn(ccregex.str())) {
+						if (ccregex.str()) {
 							fout << line << std::endl;
 							std::cout << absolutepath << " " << line << std::endl;
 						}

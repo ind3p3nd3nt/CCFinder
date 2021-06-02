@@ -53,6 +53,6 @@ The software will check for procdump.exe made by Microsoft for dumping memory in
 Please DO NOT take credits for this program.
 DONATIONS ARE WELCOME
 
-***HELP***
+*1*HELP***
 
 To get help you can contact me on social medias https://fb.me/remi.girard2

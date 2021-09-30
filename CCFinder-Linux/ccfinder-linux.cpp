@@ -21,12 +21,12 @@ int main(int argc, char* argv[])
 	cout << "---" << std::endl;
 	std::ofstream fout("CCFinder.log", ios::app);
 	fout << "CC Finder by independent 4.0 https://GitHub.com/ind3p3nd3nt All rights reserved" << std::endl;
-	for (const auto& object : fs::recursive_directory_iterator(argv[1])) 
+	for (const auto& x : fs::recursive_directory_iterator(argv[1])) 
 	{
-		fs::path absolutepath = object;
+		fs::path absolutepath = x;
 		std::string line;
 		std::cout << absolutepath << std::endl;
-		if (boost::filesystem::is_regular_file(object.path())) 
+		if (boost::filesystem::is_regular_file(x.path())) 
 		{
 			try {
 				boost::iostreams::stream_buffer<boost::iostreams::file_descriptor_source> biostrm(absolutepath);

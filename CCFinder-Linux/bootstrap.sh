@@ -1,6 +1,5 @@
 #!/bin/bash
-sudo apt update; 
-sudo apt-get install libboost. build-essential git sudo g++ -y;
+if [ -f /usr/bin/apt ]; then apt-get update && apt-get install libboost-dev build-essential git g++ -y; else yum install c++ boost-devel; fi;
 g++ ccfinder-linux.cpp -o ccfinder -lboost_filesystem -lboost_system -lboost_iostreams -lboost_regex;
-sudo chmod +x ccfinder;
-sudo cp ccfinder /usr/sbin/ccfinder -r;
+chmod +x ccfinder;
+cp ccfinder /usr/sbin/ccfinder -r;

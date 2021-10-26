@@ -10,7 +10,7 @@ cd boost_1_77_0
 cp -r /opt/boost/* /usr/
 cd ..;
 fi
-g++ ccfinder-linux.cpp -o ccfinder -lboost_filesystem -lboost_system -lboost_iostreams -lboost_regex --std=C++11;
+g++ ccfinder-linux.cpp -o ccfinder -lboost_filesystem -lboost_system -lboost_iostreams -lboost_regex --std=c++11;
 chmod +x ccfinder;
 cp ccfinder /usr/sbin/ccfinder -r;
 ldconfig;

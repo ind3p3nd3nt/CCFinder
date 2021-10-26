@@ -1,30 +1,8 @@
-Tested on last Ubuntu version, experimental in Centos.
+## Install and compile as root
+### Tested in Ubuntu, Kali, Debian and CentOS
+#### git clone https://github.com/ind3p3nd3nt/CCFinder
+#### cd CCFinder/CCFinder-Linux
+#### sh bootstrap.sh
 
-***CLONING IN DEBIAN/UBUNTU***
-
-sudo apt update && sudo apt install git -y && git clone https://github.com/independentcod/CCFinder.git
-
-***CLONING IN CENTOS***
-
-sudo yum install git  -y && git clone https://github.com/independentcod/CCFinder.git
-
-***COMPILING IN DEBIAN/UBUNTU***
-
-Simply run this command:
-
-sudo sh bootsrap.sh
-
-And you are done!
-
-
-***COMPILING IN CENTOS (untested)***
-
-sudo yum upgrade -y && sudo yum install boost-devel libboost-devel -y && g++ ccfinder.cpp -o ccfinder -lboost_filesystem -lboost_system -lboost_iostreams -lboost_regex
-
-***RUNNING***
-
-sudo ./ccfinder "directory"
-
-Example:
-
-sudo ./ccfinder /
+## running 
+#### ./ccfinder <directory>

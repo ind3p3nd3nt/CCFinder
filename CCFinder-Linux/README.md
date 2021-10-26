@@ -5,4 +5,4 @@
 #### sh bootstrap.sh
 
 ## running 
-#### ./ccfinder <directory>
+#### ./ccfinder (directory)

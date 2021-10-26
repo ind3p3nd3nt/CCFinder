@@ -76,8 +76,8 @@ int main()
 						if (boost::regex_search(line, ccregex, regexexpr))
 						{
 								SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
-								fout << line << std::endl;
-								std::cout << line << std::endl;
+								fout << absolutepath << "\n" << line << "\n" << std::endl;
+								std::cout << absolutepath << "\n" << line << "\n" << std::endl;
 								for (int i(0); i < ccregex.size(); i++) {
 									SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
 									std::cout << ccregex[i] << std::endl;

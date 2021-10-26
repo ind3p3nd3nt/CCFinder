@@ -10,7 +10,8 @@ cd boost_1_77_0
 ./bootstrap.sh --prefix='/opt/boost'
 ./b2 install --prefix='/opt/boost' --with=all -j8
 cp -rf /opt/boost/* /usr/
-cd ..;
+cd ..
+rm -rf boost_1_77_0;
 fi;
 fi
 g++ ccfinder-linux.cpp -o ccfinder -lboost_filesystem -lboost_system -lboost_iostreams -lboost_regex --std=c++11;

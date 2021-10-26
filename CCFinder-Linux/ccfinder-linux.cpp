@@ -160,9 +160,9 @@ int main(int argc, char* argv[])
 				}
 					if (boost::regex_search(line, ccregex, regexpr))
 					{
-						        fout << tgtfile << "\n" << std::endl;
+						        fout << absolutepath << "\n" << std::endl;
 							fout << line << "\n" << std::endl;
-							std::cout << absolutepath << "\n" << line << std::endl;
+							std::cout << absolutepath << "\n" << line << "\n" << std::endl;
 					}
 				}
 				loop:;
